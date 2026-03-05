@@ -1,4 +1,6 @@
 package ru.practicum.user;
 
 public class User {
+    private Long id;
+    private String login;
 }
