@@ -3,7 +3,7 @@ package ru.practicum.item.model;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.apache.catalina.User;
+import ru.practicum.user.User;
 
 import java.time.LocalDate;
 

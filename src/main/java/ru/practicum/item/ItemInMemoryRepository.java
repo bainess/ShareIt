@@ -4,6 +4,8 @@ import org.springframework.stereotype.Repository;
 import ru.practicum.item.model.Item;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Repository
@@ -30,5 +32,19 @@ public class ItemInMemoryRepository {
 
     public Optional<Item> getItem(Long itemId) {
         return Optional.ofNullable(items.get(itemId));
+    }
+
+    public Optional<List<Item>> getAllItemsByUser(Long userId) {
+        List<Item> filteredItems = items.values().stream()
+                .filter(item -> Objects.equals(item.getOwner().getId(), userId))
+                .toList();
+        return Optional.of(filteredItems);
+    }
+
+    public List<Item> searchForItem(String text) {
+        return items.values().stream()
+                .filter(item -> item.getName().contains(text) || item.getDescription().contains(text))
+                .filter(Item::isAvailable)
+                .toList();
     }
 }

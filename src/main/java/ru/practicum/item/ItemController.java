@@ -15,7 +15,7 @@ public class ItemController {
 
     //TODO: должен возращать только доступные вещи
     @GetMapping("/search")
-    public List<Item> searchItems(@RequestParam(name="text") String text) {
+    public List<ItemDto> searchItems(@RequestParam(name="text") String text) {
         return itemService.searchItems(text);
     }
 
@@ -25,11 +25,11 @@ public class ItemController {
         return itemService.findAllItemsByUser(userId);
     }
 
-    @GetMapping
-    public Item getItemByUserAndItem(@RequestHeader("X-Sharer-User-Id") Long userId,
-                                     @PathVariable(name="itemId") Long itemId) {
-        return itemService.getItemByUserAndItem(userId, itemId);
-    }
+//    @GetMapping
+//    public Item getItemByUserAndItem(@RequestHeader("X-Sharer-User-Id") Long userId,
+//                                     @PathVariable(name="itemId") Long itemId) {
+//        return itemService.getItemByUserAndItem(userId, itemId);
+//    }
 
     @GetMapping("/{itemId}")
     public ItemDto getItemById(@PathVariable(name="itemId") Long itemId) {
