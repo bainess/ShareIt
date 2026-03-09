@@ -2,6 +2,7 @@ package ru.practicum.item;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.item.dto.ItemDto;
 import ru.practicum.item.model.Item;
 
 import java.util.List;
@@ -31,18 +32,18 @@ public class ItemController {
     }
 
     @GetMapping("/{itemId}")
-    public Item getItemById(@PathVariable(name="itemId") Long itemId) {
-        return itemService.getItemId(itemId);
+    public ItemDto getItemById(@PathVariable(name="itemId") Long itemId) {
+        return itemService.getItemById(itemId);
     }
 
     @PostMapping
-    public ItemDto addItem(@RequestHeader("X-Sharer-User-Id") Long userId,
-                           @RequestBody Item item) {
+    public Item addItem(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                @RequestBody Item item) {
         return itemService.saveItem(item);
     }
     @PatchMapping("/{itemId}")
-    public ItemDto updateItem(@RequestHeader("X-Sharer-User-Id") Long userId,
-                              @RequestBody Item item) {
+    public Item updateItem(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                   @RequestBody Item item) {
         return itemService.updateItem(item);
     }
 }

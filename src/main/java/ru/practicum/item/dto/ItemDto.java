@@ -1,0 +1,14 @@
+package ru.practicum.item.dto;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@RequiredArgsConstructor
+public class ItemDto {
+    private Long id;
+    private String name;
+    private String description;
+}
